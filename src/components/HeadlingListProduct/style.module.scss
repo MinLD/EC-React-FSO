@@ -1,0 +1,8 @@
+@import '@styles/main.module.scss';
+.container{
+    @include flex_box_custum(space-between,center,10px);
+    margin-top: 40px;
+}
+.containerItems{
+    @include flex_box_custum(center,center,10px)
+}

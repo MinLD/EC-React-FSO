@@ -1,0 +1,18 @@
+// viết những khối style chung, tái sử dụng
+@mixin radius_common ($radius: 10px){
+    border-radius: $radius;
+}
+@mixin flex_box_custum($x,$y,$gap:10px){
+    display: flex;
+    justify-content: $x;
+    align-items: $y;
+    gap: $gap
+}
+@mixin btn($w,$h,$color,$radius){
+    outline: none;
+    border: 1px solid #e1e1e1;
+    width: $w;
+    height: $h;
+    background-color: $color;
+    @include radius_common($radius)
+}

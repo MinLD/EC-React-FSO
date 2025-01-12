@@ -1,0 +1,7 @@
+@import '@styles/main.module.scss';
+
+.container{
+    @include flex_box_custum(space-between,center,10px);
+    margin-top: 10px;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,26 @@
+@import '@styles/main.module.scss';
+
+.container{
+    padding: 30px 0;
+    @include flex_box_custum(center,center,0px);
+    border-radius: 6px;
+}
+.containerMidleBox{
+    width: 60%;
+    @include flex_box_custum(center,center,0px);
+    flex-direction: column;
+    line-height: 1px;
+}
+.headling{
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+    height: 2px;
+    width: 100%;
+    margin-top: 30px;
+}
+.des{
+    font-size: 14px;
+}
+.title{
+    font-size: 28px;
+}

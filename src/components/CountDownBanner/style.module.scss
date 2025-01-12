@@ -1,0 +1,25 @@
+@import "@styles/main.module.scss";
+.container {
+  background-image: url("https://elise.vn/media/catalog/product/cache/bb52e54e5ec1828d48ae8bf7c98f9f69/f/f/ff2407147tuwobl11.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: calc(100% / 2);
+  height: 501.5px;
+  @include flex_box_custum(center, center, 0px);
+}
+.containerBanner {
+  @include flex_box_custum(center, center, 0px);
+  flex-direction: column;
+  line-height: 70px;
+}
+.title {
+  font-size: 30px;
+  font-weight: 800;
+  color: $four_color;
+}
+.boxBtn {
+    width: 172px;
+    margin-top: 20px;
+    margin: 20px auto;
+    text-align: center;
+}

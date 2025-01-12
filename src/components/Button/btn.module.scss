@@ -1,0 +1,20 @@
+
+@import '@styles/mixins.module.scss';
+@import '@styles/variables.module.scss';
+.btn{
+@include btn(100px,50px,$primary_color,3px);
+cursor: pointer;
+color: $white_color;
+font-weight: 400;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+&:active{
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transform: scale(0.95);
+    
+}
+&:hover{
+    background-color: $white_color;
+    color: $primary_color;
+}
+}
+
