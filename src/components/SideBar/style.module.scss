@@ -1,0 +1,40 @@
+@import "@styles/main.module.scss";
+.container {
+  position: relative;
+  top: 0;
+  .layout {
+    background-color: rgba(12, 12, 12, 0.389);
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: all 0.3s ease;
+  }
+  .sidebar {
+    top: 0;
+    right: 0;
+    position: fixed;
+    background-color: #ffffff;
+    width: 350px;
+    height: 100vh;
+    z-index: 1001;
+    transform: translateX(370px);
+    transition: transform 0.3s ease;
+    .boxIcon{
+        @include flex_box_custum(center,center,0px);
+        position: absolute;
+        top: 15px;
+        left: -45px;
+        width: 40px;
+        height: 40px;
+        background-color: #ffffffa7;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+  }
+  .slidesidebar {
+    transform: translateX(0);
+  }
+}

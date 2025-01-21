@@ -1,58 +1,64 @@
-@import '@styles/mixins.module.scss';
-@import '@styles/variables.module.scss';
+@import "@styles/mixins.module.scss";
+@import "@styles/variables.module.scss";
 
-.container{
-    @include flex_box_custum(center, center, 0px);
-    // background: linear-gradient(to left, rgba(129, 12, 12, 0.892) 20%, rgb(39, 36, 36) 80%, );
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
+.container {
+  @include flex_box_custum(center, center, 0px);
 
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
 }
-.containerHeader{
-    width: 1250px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    height: 60px;
+.fixedHeader {
+  top: -83px;
+  position: fixed;
+  z-index: 999;
+  background: #ffffffe6;
+  transform: translateY(83px);
+  transition:  transform 0.3s ease ;
 }
-.BoxIcons{
-    @include radius_common(50%);
-    @include flex_box_custum(center,center,0px);
-    height: 26px;
-    width: 26px;
-    background-color: $primary_color;
+.containerHeader {
+  width: 1250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 60px;
 }
-.containerBox{
-    @include flex_box_custum(center, center, 20px);
+.BoxIcons {
+  @include radius_common(50%);
+  @include flex_box_custum(center, center, 0px);
+  height: 26px;
+  width: 26px;
+  background-color: $primary_color;
 }
-.flexBoxIcons{
-    @include flex_box_custum(center, center, 10px)
+.containerBox {
+  @include flex_box_custum(center, center, 20px);
 }
-.flexMenu{
-    @include flex_box_custum(center, center, 40px);
-    
+.flexBoxIcons {
+  @include flex_box_custum(center, center, 10px);
 }
-.menuContent{
-cursor: pointer;
-padding-top: 8px;
-font-size: 20px;
-color: $primary_color;
+.flexMenu {
+  @include flex_box_custum(center, center, 40px);
 }
-.menuContent::after{
-    content: "";
-    display: block;
-    width: 100%;
-    height: 3px;
-    background-color: black;
-    transform: scale(0);
-    transition:  transform 300ms,  opacity 500ms ;
-    transform-origin: right;
-    opacity: 0;
-    margin-top: 5px;
+.menuContent {
+  cursor: pointer;
+  padding-top: 8px;
+  font-size: 20px;
+  color: $primary_color;
 }
-.menuContent:hover::after{
-    transform: scale(1);
-    opacity: 1;
+.menuContent::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: black;
+  transform: scale(0);
+  transition: transform 300ms, opacity 500ms;
+  transform-origin: right;
+  opacity: 0;
+  margin-top: 5px;
+}
+.menuContent:hover::after {
+  transform: scale(1);
+  opacity: 1;
 }

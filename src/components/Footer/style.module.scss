@@ -1,0 +1,19 @@
+@import "@styles/main.module.scss";
+
+.container {
+  @include flex_box_custum(center, center);
+  flex-direction: column;
+  background-color: #363636;
+  margin-top: 80px;
+  color: $white_color;
+  padding: 30px 0;
+  line-height: 30px
+}
+.boxMenu {
+  @include flex_box_custum(center, center, 30px);
+  font-size: 17px;
+  :hover{
+    opacity: 40%;
+    cursor: pointer;
+  }
+}

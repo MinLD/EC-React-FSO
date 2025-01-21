@@ -1,0 +1,42 @@
+@import "@styles/main.module.scss";
+.wraplayout {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+.container {
+  width: 1350px;
+}
+.containerBox{
+    @include flex_box_custum(space-between,center,0px);
+    flex-wrap: wrap;
+    .title {
+        font-size: 35px;
+        color: $four_color;
+        font-weight: 400;
+        text-align: center;
+      }
+    
+      .des {
+        font-size: 16px;
+        color: $thr_color;
+        font-weight: 300;
+        text-align: center;
+        width: 460px;
+        line-height: 25px;
+      }
+    
+      .boxBtn {
+        @include flex_box_custum(center, center, 0px);
+        width: 172px;
+        margin: 30px auto;
+      }
+    
+      .boxImage {
+        @include flex_box_custum(center, center, 0px);
+       img{
+        width: 260px;
+        height: 370px;
+       }
+      }
+}

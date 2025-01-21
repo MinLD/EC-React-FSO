@@ -1,9 +1,13 @@
 import  style from'./btn.module.scss';
-function MyButton({content}) {
-    const {btn} = style
+import classNames from 'classnames';
+function MyButton({content,isPriamry= true}) {
+    const {btn,black,primari} = style
   return (
     <>
-    <button className={btn}>{content}</button>
+    <button className={classNames(btn, {
+      [primari]: isPriamry,
+      [black]: !isPriamry
+    })}>{content}</button>
     </>
   );
 }

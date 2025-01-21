@@ -6,7 +6,7 @@ function CountDownBanner() {
     <div className={container}>
       <div className={containerBanner}>
         <div className={title}></div>
-        <p className={title}>The classics make a comeback</p>
+
             <div className={boxBtn}>
                 <MyButton content={'Buy now'} />
             </div>
