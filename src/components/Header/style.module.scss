@@ -15,7 +15,7 @@
   z-index: 999;
   background: #ffffffe6;
   transform: translateY(83px);
-  transition:  transform 0.3s ease ;
+  transition: transform 0.3s ease;
 }
 .containerHeader {
   width: 1250px;
@@ -33,6 +33,9 @@
 }
 .containerBox {
   @include flex_box_custum(center, center, 20px);
+  :hover{
+    cursor: pointer;
+  }
 }
 .flexBoxIcons {
   @include flex_box_custum(center, center, 10px);
@@ -45,6 +48,14 @@
   padding-top: 8px;
   font-size: 20px;
   color: $primary_color;
+  position: relative;
+  .subMenu{
+    position: absolute;
+    background-color: #fff;
+    padding: 10px;
+    width: 100%;
+    top: 40px
+  }
 }
 .menuContent::after {
   content: "";

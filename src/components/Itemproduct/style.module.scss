@@ -1,0 +1,45 @@
+@import "@styles/main.module.scss";
+.container {
+  @include flex_box_custum(center, flex-start);
+  margin-top: 20px;
+  position: relative;
+  padding: 10px;
+  .boxImg {
+    img {
+      width: 70px;
+      height: 100px;
+    }
+  }
+  .boxContent {
+    @include flex_box_custum(center, flex-start,0px);
+    flex-direction: column;
+    .title {
+      font-size: 17px;
+    }
+    .price {
+      font-size: 14px;
+      margin-bottom: 7px;
+    }
+    .size{
+        margin-top: 5px;
+        margin-bottom: 7px;
+        color: #c1c1c1;
+    }
+    
+  }
+  .boxIcon {
+    position: absolute;
+    top: 0px;
+    right: 8px;
+    color: #c1c1c1;
+    transform: translateX(50px);
+    transition: all 0.5s ease;
+  }
+  &:hover {
+    background-color: #efe9e99b;
+    .boxIcon {
+      transform: translateX(0);
+      cursor: pointer;
+    }
+  }
+}

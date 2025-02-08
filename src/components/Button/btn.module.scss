@@ -1,7 +1,7 @@
 @import "@styles/mixins.module.scss";
 @import "@styles/variables.module.scss";
 .btn {
-  @include btn(100px, 50px, 0, 3px);
+  @include btn(100%, 50px, 0, 3px);
   cursor: pointer;
   font-weight: 400;
   transition: transform 0.2s ease, box-shadow 0.2s ease;

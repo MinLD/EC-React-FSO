@@ -1,0 +1,31 @@
+@import "../../../src/assets/styles/main.module.scss";
+.container {
+  margin-bottom: 15px;
+  .inputlabel {
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+  .boxInput {
+    width: 100%;
+    position: relative;
+    input {
+      width: 100%;
+      padding: 10px 0px 10px 10px;
+      outline: none;
+      border: 1px solid #e1e1e1;
+    }
+    .boxIcon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translateY(50%);
+      cursor: pointer;
+    }
+   
+  }
+ 
+}
+.errMSG{
+  font-size: 14px;
+  color: red;
+}

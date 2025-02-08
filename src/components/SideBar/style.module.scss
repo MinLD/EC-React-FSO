@@ -32,7 +32,12 @@
         background-color: #ffffffa7;
         border-radius: 50%;
         cursor: pointer;
+        :hover{
+          background-color: #ccc;
+        }
+       
     }
+   
   }
   .slidesidebar {
     transform: translateX(0);
