@@ -58,6 +58,7 @@ export const OutshopProvider = ({ children }) => {
     isShowGrid,
     isProduct,
   };
+
   useEffect(() => {
     const query = {
       sortType: sortId,
@@ -69,7 +70,7 @@ export const OutshopProvider = ({ children }) => {
         setProduct(res);
       })
       .catch((err) => {
-        console.log(res);
+        console.log(err);
       });
   }, [sortId, showId]);
 

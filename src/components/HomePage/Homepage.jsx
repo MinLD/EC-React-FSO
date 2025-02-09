@@ -15,7 +15,12 @@ function MyHomePage() {
 
   const { container } = styles;
   useEffect(() => {
-    getAllProduct().then((res) => {
+    const query = {
+      sortType: '',
+      page: 1,
+      limit: '',
+    };
+    getAllProduct(query).then((res) => {
       setListproduct(res);
     });
   }, []);
@@ -25,8 +30,8 @@ function MyHomePage() {
       <MyBanner />
       <MyInfo />
       <AvanceHeadling />
-      <HeadlingListProduct data={DataProductFake.slice(0, 2)} />
-      <PopularProduct data={DataProductFake.slice(2, DataProductFake.length)} />
+      <HeadlingListProduct data={listproduct.slice(0, 2)} />
+      <PopularProduct data={listproduct.slice(2, listproduct.length)} />
       <SaleHomepage />
       <MyFooter />
     </div>

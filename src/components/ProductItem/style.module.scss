@@ -59,3 +59,37 @@
   color: $thr_color;
   font-weight: 400;
 }
+.boxSize {
+  @include flex_box_custum(center, center, 10px);
+  margin-top: 10px;
+  .sizeItem {
+    border: 1px solid rgb(173, 173, 166);
+    padding: 3px;
+    width: 10px;
+    height: 10px;
+    text-align: center;
+    font-size: 10px;
+  }
+}
+.containerText {
+  text-align: center;
+}
+.containerText1 {
+  text-align: left;
+}
+.boxBtn {
+  width: 150px;
+  margin: 10px auto;
+}
+.container {
+  @include flex_box_custum(flex-start, center, 40px);
+  padding-top: 10px;
+}
+.containerBox {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.BoxImg1{
+  width: 400px;
+}
