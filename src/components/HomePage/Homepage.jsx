@@ -12,6 +12,7 @@ import SaleHomepage from "../SaleHomepage/SaleHomepase.jsx";
 import MyFooter from "../Footer/Footer.jsx";
 function MyHomePage() {
   const [listproduct, setListproduct] = useState([]);
+
   const { container } = styles;
   useEffect(() => {
     getAllProduct().then((res) => {

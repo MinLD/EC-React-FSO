@@ -3,7 +3,6 @@
 
 .container {
   @include flex_box_custum(center, center, 0px);
-
   position: absolute;
   left: 0;
   right: 0;
@@ -21,7 +20,7 @@
   width: 1250px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   height: 60px;
 }
 .BoxIcons {
@@ -33,7 +32,7 @@
 }
 .containerBox {
   @include flex_box_custum(center, center, 20px);
-  :hover{
+  :hover {
     cursor: pointer;
   }
 }
@@ -49,12 +48,12 @@
   font-size: 20px;
   color: $primary_color;
   position: relative;
-  .subMenu{
+  .subMenu {
     position: absolute;
     background-color: #fff;
     padding: 10px;
     width: 100%;
-    top: 40px
+    top: 40px;
   }
 }
 .menuContent::after {

@@ -1,6 +1,6 @@
 import Truck from "@icons/svgs/TruckIcon.svg";
 import styles from "../style.module.scss";
-function MyInfoCard({title,des,src}) {
+function MyInfoCard({ title, des, src }) {
   const { containerCard, content } = styles;
   return (
     <div className={containerCard}>

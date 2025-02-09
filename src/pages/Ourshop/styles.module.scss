@@ -1,0 +1,59 @@
+@import "@styles/main.module.scss";
+.container {
+  padding-top: 73px;
+  .functionBox {
+    @include flex_box_custum(space-between, center, 0px);
+    color: rgba(38, 37, 36, 0.553);
+    padding-bottom: 15px;
+    .btnPrv {
+      &:hover {
+        cursor: pointer;
+        color: black;
+      }
+    }
+  }
+}
+.containerBanner {
+  background-image: url("https://elise.vn/media/catalog/product/cache/bb52e54e5ec1828d48ae8bf7c98f9f69/f/s/fs2412215tswopp3.jpg");
+  width: 100%;
+  height: 400px;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include flex_box_custum(center, center, 0px);
+  flex-direction: column;
+  font-size: 24px;
+  gap: 20px;
+}
+.btnBox {
+  width: 150px;
+}
+
+.containerFillter {
+  padding-top: 10px;
+  @include flex_box_custum(space-between, center, 0px);
+
+  .containerBox {
+    @include flex_box_custum(center, center, 10px);
+    .boxIcon {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    .selectBox {
+      padding: 7px;
+      border: 1px solid #e1e1e1;
+    }
+    .selectBox.left {
+      width: 200px;
+    }
+    .selectBox.right {
+      width: 50px;
+    }
+  }
+}
+.containerProduct {
+  @include flex_box_custum(space-between, center, 10px);
+  padding-top: 10px;
+  flex-wrap: wrap;
+}
