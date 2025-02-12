@@ -6,8 +6,12 @@ import ytb from "@icons/svgs/youtbIcon.svg";
 import reload from "@icons/svgs/reloadIcon.svg";
 import heart from "@icons/svgs/heartIcon.svg";
 import shopping from "@icons/svgs/shoppingIcon.svg";
+import { useContext } from "react";
+import { SidebarContext } from "../../../contexts/SideBarProvider";
+
 function MyBoxIcons({ type, href }) {
-  const { BoxIcons } = styles;
+  const { ListProductCart } = useContext(SidebarContext);
+  const { BoxIcons, quacity } = styles;
   const handleIcons = (type) => {
     switch (type) {
       case "fb":
@@ -16,17 +20,19 @@ function MyBoxIcons({ type, href }) {
         return ins;
       case "ytb":
         return ytb;
-        case "reload":
-          return reload;
-        case "heart":
-          return heart;
-        case "sp":
-          return shopping;
+      case "reload":
+        return reload;
+      case "heart":
+        return heart;
+      case "sp":
+        return shopping;
     }
   };
+
   return (
     <div className={BoxIcons}>
       <img src={handleIcons(type)} alt={type} />
+      {type === "sp" && <div className={quacity}>{ListProductCart.length}</div>}
     </div>
   );
 }

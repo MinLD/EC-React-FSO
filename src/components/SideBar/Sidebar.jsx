@@ -10,21 +10,22 @@ import Cart from "../contentsSidebar/Cart/Cart";
 
 function Sidebar() {
   const { container, layout, slidesidebar, sidebar, boxIcon } = styles;
-  const { isOpen, setIsOpen, istype } = useContext(SidebarContext);
+  const { isOpen, setIsOpen, istype, ListProductCart } =
+    useContext(SidebarContext);
   const handleRender = () => {
     switch (istype) {
       case "reload":
-        return <Compare/>;
+        return <Compare />;
         break;
       case "heart":
-        return <WistList/>;
+        return <WistList />;
         break;
       case "sp":
-        return <Cart/>;
+        return <Cart />;
         break;
-        case "login":
-          return  <Login />;
-          break;
+      case "login":
+        return <Login />;
+        break;
 
       default:
         return <Login />;

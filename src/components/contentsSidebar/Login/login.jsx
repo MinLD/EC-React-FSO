@@ -8,12 +8,12 @@ import { toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { Register, SignIn } from "../../../apis/authService";
 import { SidebarContext } from "../../../contexts/SideBarProvider";
+import { StoreContext } from "../../../contexts/storeProvider";
 
 function Login() {
   const { container, title, boxBtn, checkBox, lostpw } = styles;
-  const {setIsOpen}=useContext(SidebarContext)
-
-
+  const { setIsOpen, handleListProductCart } = useContext(SidebarContext);
+  const { setUserId } = useContext(StoreContext);
   const [isRegister, setRegister] = useState(false);
   const handletogle = () => {
     setRegister(!isRegister);
@@ -51,13 +51,13 @@ function Login() {
       if (!isRegister) {
         await SignIn({ username, password })
           .then((res) => {
-            console.log(res);
             const { id, token, refreshToken } = res.data;
+            setUserId(id);
             Cookies.set("token", token);
             Cookies.set("refreshToken", refreshToken);
             Cookies.set("id", id);
-            window.location.reload();
-            setIsOpen(false)
+            handleListProductCart(id, "cart");
+            setIsOpen(false);
           })
           .catch((res) => {
             console.log(res);

@@ -5,11 +5,21 @@
   flex-direction: column;
   padding: 20px 20px 0px 20px;
   height: 95%;
-  .boxBtn{
-    @include flex_box_custum(space-between, unset,10px);
+  .boxBtn {
+    @include flex_box_custum(space-between, unset, 10px);
     flex-direction: column;
-    .total{
-      @include flex_box_custum(space-between, center,0px);
+    .total {
+      @include flex_box_custum(space-between, center, 0px);
     }
+  }
+}
+.cartRong {
+  @include flex_box_custum(center, center, 10px);
+  flex-direction: column;
+  margin-top: 20px;
+  .boxBtnReturnShop {
+    width: 100px;
+    height: 50px;
+
   }
 }

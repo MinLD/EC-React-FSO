@@ -9,35 +9,37 @@ import ListProduct from "./component/ListProduct";
 import MyFooter from "../../components/Footer/Footer";
 
 function Ourshop() {
-  const { container, functionBox, btnPrv } = styles;
+  const { container, functionBox, btnPrv, sessionListProduct } = styles;
   const navigate = useNavigate();
   const handlePrvPages = () => {
     navigate(-1);
   };
   return (
-    <OutshopProvider>
-      <MyHeader />
-      <MyLayout>
-        <div className={container}>
-          <div className={functionBox}>
+    <>
+      <OutshopProvider>
+        <MyHeader />
+        <MyLayout>
+          <div className={container}>
+            <div className={functionBox}>
+              <div>
+                Home &gt; <b>Shop</b>
+              </div>
+              <div onClick={() => handlePrvPages()} className={btnPrv}>
+                &lt; Return to previous pages
+              </div>
+            </div>
+            <BannerOurShop />
             <div>
-              Home &gt; <b>Shop</b>
+              <Fillter />
             </div>
-            <div onClick={() => handlePrvPages()} className={btnPrv}>
-              &lt; Return to previous pages
+            <div>
+              <ListProduct />
             </div>
           </div>
-          <BannerOurShop />
-          <div>
-            <Fillter />
-          </div>
-          <div>
-            <ListProduct />
-          </div>
-        </div>
-      </MyLayout>
-      <MyFooter/>
-    </OutshopProvider>
+        </MyLayout>
+        <MyFooter />
+      </OutshopProvider>
+    </>
   );
 }
 

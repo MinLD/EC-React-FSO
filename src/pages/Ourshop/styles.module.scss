@@ -53,7 +53,22 @@
   }
 }
 .containerProduct {
-  @include flex_box_custum(space-between, center, 10px);
+  @include flex_box_custum(space-between, flex-start, 10px);
   padding-top: 10px;
-  flex-wrap: wrap;
+  flex-wrap:wrap;
+}
+.sessionListProduct{
+  min-height: 800px;
+}
+.loader {
+  animation: spin 1s linear infinite; /* Hiệu ứng quay */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); /* Bắt đầu từ 0 độ */
+  }
+  100% {
+    transform: rotate(360deg); /* Kết thúc tại 360 độ */
+  }
 }

@@ -6,9 +6,8 @@ const getAllProduct = async (query) => {
       limit === "All" ? "" : limit
     }`
   );
-  console.log(res);
 
-  return res.data.contents;
+  return res.data;
 };
 
 export default getAllProduct;

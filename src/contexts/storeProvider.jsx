@@ -4,7 +4,8 @@ import { getInfo } from "../apis/authService";
 export const StoreContext = createContext();
 export const StoreProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState(null);
-  const id = Cookies.get("id");
+  const [userId, setUserId] = useState(Cookies.get("id"));
+
   const handleLogout = () => {
     Cookies.remove("token");
     Cookies.remove("refreshToken");
@@ -13,8 +14,8 @@ export const StoreProvider = ({ children }) => {
     window.location.reload();
   };
   useEffect(() => {
-    if (id) {
-      getInfo(id)
+    if (userId) {
+      getInfo(userId)
         .then((res) => {
           console.log(res);
           setUserInfo(res.data.data);
@@ -23,9 +24,9 @@ export const StoreProvider = ({ children }) => {
           console.log(err);
         });
     }
-  }, [id]);
+  }, [userId]);
   return (
-    <StoreContext.Provider value={{ userInfo, handleLogout }}>
+    <StoreContext.Provider value={{ userInfo, handleLogout, setUserId }}>
       {children}
     </StoreContext.Provider>
   );

@@ -7,13 +7,12 @@ import Sidebar from "./components/SideBar/Sidebar.jsx";
 import { ToastProvider } from "./contexts/ToasProvider.jsx";
 import { StoreProvider } from "./contexts/storeProvider.jsx";
 function App() {
-  
   return (
     <StoreProvider>
       <ToastProvider>
         <SidebarProvider>
-          <Sidebar />
           <BrowserRouter>
+            <Sidebar />
             <Suspense fallback={<div>Loading...</div>}>
               <Routes>
                 {Routerss.map((i, k) => {

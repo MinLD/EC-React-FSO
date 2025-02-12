@@ -21,7 +21,7 @@ function MyHomePage() {
       limit: '',
     };
     getAllProduct(query).then((res) => {
-      setListproduct(res);
+      setListproduct(res.contents);
     });
   }, []);
   return (

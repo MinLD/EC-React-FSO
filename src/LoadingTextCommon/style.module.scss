@@ -1,0 +1,12 @@
+.loader {
+  animation: spin 1s linear infinite; /* Hiệu ứng quay */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); /* Bắt đầu từ 0 độ */
+  }
+  100% {
+    transform: rotate(360deg); /* Kết thúc tại 360 độ */
+  }
+}

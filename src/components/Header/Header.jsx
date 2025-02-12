@@ -7,6 +7,7 @@ import styles from "./style.module.scss";
 import logo from "@icons/images/logo_elise.png";
 import classNames from "classnames";
 import { SidebarContext } from "../../contexts/SideBarProvider";
+import Cookie from "js-cookie";
 function MyHeader() {
   const {
     containerHeader,
@@ -18,10 +19,16 @@ function MyHeader() {
   } = styles;
   const { scrollPosition } = useScrollTracking();
   const [fixedPosition, SetFixedposition] = useState(false);
-  const { isOpen, setIsOpen, istype, setType } = useContext(SidebarContext);
+  const { isOpen, setIsOpen, istype, setType, } =
+    useContext(SidebarContext);
+ 
   const handleRender = (type) => {
     setIsOpen(true);
     setType(type);
+    if (type === "sp") {
+      console.log(type);
+
+    }
   };
   useEffect(() => {
     SetFixedposition(scrollPosition >= 100);
