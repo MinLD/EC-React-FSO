@@ -9,14 +9,17 @@ import { useNavigate } from "react-router-dom";
 
 function Cart() {
   const { ListProductCart = [], setIsOpen } = useContext(SidebarContext);
-  console.log(ListProductCart);
+
   const { container, boxBtn, total, cartRong, boxBtnReturnShop } = styles;
   const navigate = useNavigate();
   const handleReturnToShop = () => {
     navigate("/shop");
     setIsOpen(false);
   };
-  console.log(ListProductCart);
+  const handleReturnToCART = () => {
+    navigate("/cart");
+    setIsOpen(false);
+  };
   const subTotal = ListProductCart.reduce((acc, item) => {
     return acc + item.total;
   }, 0);
@@ -62,10 +65,14 @@ function Cart() {
         <div className={boxBtn}>
           <div className={total}>
             <div>SUBTOTAL: </div>
-            <div>{subTotal}</div>
+            <div>{subTotal.toFixed(2)}</div>
           </div>
           <MyButton content={"VIEW LISTWISH"} />
-          <MyButton content={"ADD ALL TO CART"} isPriamry={false} />
+          <MyButton
+            content={"ADD ALL TO CART"}
+            isPriamry={false}
+            onClick={handleReturnToCART}
+          />
         </div>
       )}
     </div>

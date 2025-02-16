@@ -1,11 +1,12 @@
 import styles from "../../ourshop/styles.module.scss";
-function SelectBox({ option, getvalue, type }) {
-  const { containerFillter, containerBox, selectBox, left, right, boxIcon } =
-    styles;
+function SelectBox({ option, getvalue, type, defaultValue }) {
+  const { selectBox } = styles;
+  console.log(defaultValue);
   return (
     <select
       className={selectBox}
       onChange={(e) => getvalue(e.target.value, type)}
+      value={defaultValue}
     >
       {option.map((e, k) => {
         return (

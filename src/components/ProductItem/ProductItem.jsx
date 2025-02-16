@@ -48,10 +48,10 @@ function ProductItem({
     setIsOpen,
     setType,
     setLoading,
-    isLoading,
-    setListProductCard,
-    ListProductCard,
+
     handleListProductCart,
+    isDetailProduct,
+    setDetailProduct,
   } = useContext(SidebarContext);
   const userId = Cookies.get("id");
   const handleGetToCard = () => {
@@ -85,6 +85,11 @@ function ProductItem({
         setLoading(false);
       });
   };
+  const handleGetDetails = () => {
+    setIsOpen(true);
+    setType("detail");
+    setDetailProduct(details);
+  };
 
   return (
     <div className={!isShowGrid && !isHomePages ? container : ""}>
@@ -106,7 +111,7 @@ function ProductItem({
             <img src={reload} alt="ss" />
           </div>
           <div className={BoxIcon}>
-            <img src={Eye} alt="ss" />
+            <img src={Eye} alt="ss" onClick={handleGetDetails} />
           </div>
         </div>
       </div>

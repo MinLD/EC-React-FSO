@@ -1,0 +1,54 @@
+@import "@styles/main.module.scss";
+.containerDetails {
+  padding: 15px;
+}
+.containerBodyDetails {
+  @include flex_box_custum(flex-start, 0, 5px);
+  flex-direction: column;
+  padding-top: 10px;
+  .boxSize {
+    @include flex_box_custum(flex-start, center, 5px);
+
+    .size {
+      @include flex_box_custum(center, center, 5px);
+      border: 1px solid #e1e1e1;
+      padding: 5px;
+      width: 10px;
+      height: 10px;
+      &:hover {
+        cursor: pointer;
+        border: 1px solid #333;
+      }
+    }
+    .isActive {
+      border: 2px solid #333;
+    }
+  }
+
+  .boxSelect {
+    @include flex_box_custum(flex-start, unset, 15px);
+
+    .boxBtn {
+      width: 200px;
+    }
+    .selectBox {
+      padding: 7px;
+      border: 1px solid #e1e1e1;
+    }
+  }
+  .boxOr {
+    @include flex_box_custum(flex-start, center, 5px);
+    .Line {
+      flex-grow: 1;
+      height: 1px;
+      border-top: 1px solid #ddd;
+    }
+  }
+  .boxIcon {
+    @include flex_box_custum(flex-start, center, 5px);
+    &:hover {
+      cursor: pointer;
+      color: #5d5d5d;
+    }
+  }
+}

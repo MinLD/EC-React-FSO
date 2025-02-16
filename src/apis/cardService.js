@@ -11,4 +11,10 @@ const deleteItem = async (data) => {
     data: data,
   });
 };
-export { addProductToCard, getCard, deleteItem };
+const deleteCard = async (data) => {
+  console.log(data);
+  return await axiosClient.delete("/cart/delete", {
+    data: data,
+  });
+};
+export { addProductToCard, getCard, deleteItem, deleteCard };

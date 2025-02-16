@@ -20,6 +20,8 @@ export const SidebarProvider = ({ children }) => {
         });
     }
   };
+  const [isDetailProduct, setDetailProduct] = useState();
+  const userId = Cookies.get("id");
   const value = {
     isOpen,
     setIsOpen,
@@ -30,6 +32,9 @@ export const SidebarProvider = ({ children }) => {
     setListProductCart,
     ListProductCart,
     handleListProductCart,
+    userId,
+    isDetailProduct,
+    setDetailProduct,
   };
   useEffect(() => {
     handleListProductCart(Cookies.get("id"), "cart");

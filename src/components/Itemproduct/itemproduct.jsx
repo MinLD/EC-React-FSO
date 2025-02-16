@@ -4,7 +4,7 @@ import styles from "./style.module.scss";
 import { IoIosClose } from "react-icons/io";
 import { SidebarContext } from "../../contexts/SideBarProvider";
 import LoadingTextCommon from "../../LoadingTextCommon/loadingTextCommon";
-function ItemProduct({
+function  ItemProduct({
   src,
   nameProduct,
   priceProduct,

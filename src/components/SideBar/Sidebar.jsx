@@ -7,6 +7,7 @@ import Login from "../contentsSidebar/Login/login";
 import Compare from "../contentsSidebar/Compare/compare";
 import WistList from "../contentsSidebar/WishList/WistList";
 import Cart from "../contentsSidebar/Cart/Cart";
+import DetailsProduct from "../contentsSidebar/detailsProduct/detailsProduct";
 
 function Sidebar() {
   const { container, layout, slidesidebar, sidebar, boxIcon } = styles;
@@ -26,7 +27,9 @@ function Sidebar() {
       case "login":
         return <Login />;
         break;
-
+      case "detail":
+        return <DetailsProduct />;
+        break;
       default:
         return <Login />;
         break;

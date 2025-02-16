@@ -1,6 +1,6 @@
 @import "@styles/main.module.scss";
 .container {
-  @include flex_box_custum(center, flex-start);
+  @include flex_box_custum(unset, flex-start);
   margin-top: 20px;
   position: relative;
   padding: 10px;

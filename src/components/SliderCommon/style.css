@@ -1,0 +1,24 @@
+.slick-slider:hover .slick-arrow {
+  z-index: 99999;
+  color: rgb(83, 80, 80);
+  width: 40px;
+  height: 40px;
+  opacity: 1;
+  transition: all 0.2s ease;
+}
+.slick-slider:hover .slick-prev {
+  left: 10px;
+}
+.slick-slider:hover .slick-next {
+  right: 10px;
+}
+.slick-prev {
+  left: 0;
+}
+.slick-next {
+  right: 0;
+}
+.boxImage {
+  width: 100%;
+  height: 300px;
+}
