@@ -13,6 +13,9 @@ const Routerss = [
     path: "/cart",
     component: lazy(() => import("@pages/cart/cart.jsx")),
   },
+  {
+    path: "/product/:id",
+    component: lazy(() => import("@pages/detailProduct/detailProduct.jsx")),
+  },
 ];
-
 export default Routerss;

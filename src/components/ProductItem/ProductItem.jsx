@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import { SidebarContext } from "../../contexts/SideBarProvider";
 import { addProductToCard, getCard } from "../../apis/cardService";
 import LoadingTextCommon from "../../LoadingTextCommon/loadingTextCommon";
+import { useNavigate } from "react-router-dom";
 function ProductItem({
   name,
   src,
@@ -40,6 +41,7 @@ function ProductItem({
     clearBtn,
   } = styles;
   const size = details.size;
+
   const [choseSize, setChoseSize] = useState("");
   const handleGetChoseSize = (size) => {
     setChoseSize(size);
@@ -50,10 +52,14 @@ function ProductItem({
     setLoading,
 
     handleListProductCart,
-    isDetailProduct,
+    getProduct,
+
+    setProduct,
     setDetailProduct,
   } = useContext(SidebarContext);
+
   const userId = Cookies.get("id");
+  const navigate = useNavigate();
   const handleGetToCard = () => {
     if (!userId) {
       setIsOpen(true);
@@ -90,7 +96,11 @@ function ProductItem({
     setType("detail");
     setDetailProduct(details);
   };
-
+  const handleTargetCart = (details) => {
+    setProduct(details);
+    const path = `/product/${details._id}`;
+    navigate(path);
+  };
   return (
     <div className={!isShowGrid && !isHomePages ? container : ""}>
       <div
@@ -98,8 +108,13 @@ function ProductItem({
           [BoxImg1]: !isShowGrid && !isHomePages,
         })}
       >
-        <img src={src} alt={name} />
-        <img src={srcPre} alt={name} className={showimgwhenhover} />
+        <div
+          style={{ cursor: "pointer" }}
+          onClick={() => handleTargetCart(details)}
+        >
+          <img src={src} alt={name} />
+          <img src={srcPre} alt={name} className={showimgwhenhover} />
+        </div>
         <div className={showfnwhenhover}>
           <div className={BoxIcon}>
             <img src={Bag} alt="ss" />

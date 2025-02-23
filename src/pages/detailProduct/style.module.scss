@@ -1,0 +1,166 @@
+@import "@styles/main.module.scss";
+.container {
+  padding-top: 83px;
+  min-height: 100vh;
+
+  .boxHeader {
+    @include flex_box_custum(space-between, center, 0);
+    .boxBackShop {
+      &:hover {
+        background-color: #f2f2f2;
+        cursor: pointer;
+      }
+    }
+  }
+  .containerContents {
+    @include flex_box_custum(flex-start, 0, 20px);
+    .boxImg {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 600px;
+      width: 100%;
+      gap: 10px;
+      padding-top: 30px;
+      height: 90vh;
+      img {
+        width: calc(100% / 2 - 10px);
+        height: 350px;
+        object-fit: cover;
+        border-radius: 3px;
+      }
+    }
+    .boxContent {
+      h3 {
+        font-weight: 700;
+        color: #888;
+
+        font-size: 26px;
+      }
+      .boxSize {
+        @include flex_box_custum(flex-start, 0, 10px);
+        flex-direction: column;
+
+        .size {
+          @include flex_box_custum(flex-start, center, 5px);
+          div {
+            border: 1px solid #e1e1e1;
+            padding: 4px 8px;
+            &:hover {
+              border: 1px solid #333;
+            }
+          }
+        }
+        .isActive {
+          background-color: #333;
+          color: #fff;
+          
+        }
+      }
+    }
+    .boxAdd {
+      @include flex_box_custum(flex-start, 0, 10px);
+      padding-top: 20px;
+      .boxCount {
+        @include flex_box_custum(flex-start, center, 0px);
+        div {
+          border: 1px solid #e1e1e1;
+          padding: 14px 6px;
+        }
+        div:nth-child(2) {
+          padding: 14px 10px;
+        }
+      }
+      .boxBtn {
+        @include flex_box_custum(center, center, 0px);
+        flex-grow: 1;
+      }
+    }
+    .boxbtnBuy {
+      @include flex_box_custum(0, 0, 20px);
+      flex-direction: column;
+      padding-top: 20px;
+      .boxOr {
+        @include flex_box_custum(center, center, 0px);
+        span {
+          padding: 0 20px;
+        }
+        div {
+          width: 100%;
+          height: 1px;
+          background-color: #f2f2f2;
+        }
+      }
+    }
+    .boxIcon {
+      @include flex_box_custum(flex-start, center, 10px);
+      padding-top: 20px;
+    }
+    .boxPayment {
+      padding-top: 20px;
+    }
+    .boxText {
+      @include flex_box_custum(flex-start, 0, 10px);
+      flex-direction: column;
+      padding-top: 0px;
+      span {
+        font-size: 16px;
+        font-weight: 500;
+        color: #888;
+      }
+    }
+    .boxAccordionMenu {
+      padding-top: 10px;
+      margin-left: 20px;
+    }
+  }
+}
+
+.containerAdditional {
+  div:last-child {
+    border-bottom: none;
+  }
+  .boxBody {
+    @include flex_box_custum(space-between, 0, 10px);
+    padding: 10px;
+    border-bottom: 1px solid #e1e1e1;
+    .boxContent {
+      @include flex_box_custum(flex-start, 0, 10px);
+    }
+  }
+}
+.containerReview {
+  @include flex_box_custum(flex-start, 0, 20px);
+  flex-direction: column;
+  .boxHeader {
+    border-bottom: 1px solid #e1e1e1;
+  }
+  .boxText1 {
+    @include flex_box_custum(0, 0, 80px);
+    flex-direction: column;
+    border-bottom: 1px solid #e1e1e1;
+  }
+  .boxRating {
+    @include flex_box_custum(0, 0, 10px);
+    flex-direction: column;
+
+    .boxStar {
+      @include flex_box_custum(0, 0, 20px);
+      color: gold;
+    }
+  }
+  .boxFooter {
+    @include flex_box_custum(flex-start, 0, 30px);
+    flex-direction: column;
+    padding-top: 10px;
+  }
+  .myBtn {
+    width: 200px;
+  }
+}
+
+.containerFooter {
+  h3 {
+    text-align: center;
+  }
+  padding-top: 70px;
+}

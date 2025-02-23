@@ -1,0 +1,27 @@
+@import "@styles/mixins.module.scss";
+@import "@styles/variables.module.scss";
+.container {
+  .boxTitle {
+    @include flex_box_custum(flex-start, center, 2px);
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    padding: 10px 0;
+  }
+  .activeTitle {
+    background-color: #eee;
+    padding: 1px;
+  }
+  .boxContent {
+    overflow: hidden;
+
+    height: 0px;
+    transition: all 0.5s ease;
+    padding: 0px 20px;
+  }
+  .activeContent {
+    height: auto;
+  }
+  .boderBottom {
+    border-bottom: 1px solid #eee;
+  }
+}

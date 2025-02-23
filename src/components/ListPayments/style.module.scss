@@ -1,0 +1,27 @@
+@import "@styles/main.module.scss";
+.paymentContainer {
+  border: 2px solid #ddd;
+
+  padding: 15px;
+  position: relative;
+  .paymentTitle {
+    position: absolute;
+    top: -10px;
+    padding: 0px 3px;
+    transform: translateX(-50%);
+    left: 50%;
+    background-color: #fff;
+    text-transform: uppercase;
+  }
+  .containerPayCard {
+    @include flex_box_custum(center, center, 10px);
+    .iconPayments {
+      border: 1px, solid #e1e1e1;
+      padding: 10px;
+      &:hover {
+        cursor: pointer;
+        border: 1px, solid #b9b9b9;
+      }
+    }
+  }
+}

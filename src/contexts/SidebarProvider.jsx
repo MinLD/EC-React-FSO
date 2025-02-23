@@ -20,6 +20,7 @@ export const SidebarProvider = ({ children }) => {
         });
     }
   };
+  const [getProduct, setProduct] = useState();
   const [isDetailProduct, setDetailProduct] = useState();
   const userId = Cookies.get("id");
   const value = {
@@ -35,6 +36,8 @@ export const SidebarProvider = ({ children }) => {
     userId,
     isDetailProduct,
     setDetailProduct,
+    getProduct,
+    setProduct,
   };
   useEffect(() => {
     handleListProductCart(Cookies.get("id"), "cart");

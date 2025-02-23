@@ -5,7 +5,7 @@ import MyHeader from "../Header/Header";
 import HeadlingListProduct from "../HeadlingListProduct/HeadlingListProduct";
 import MyInfo from "../Info/Info";
 import styles from "./style.module.scss";
-import getAllProduct from "../../apis/apiProduct";
+import { getAllProduct } from "../../apis/apiProduct";
 import PopularProduct from "../PopularProduct/PopularProduct";
 import DataProductFake from "./DataFake.js";
 import SaleHomepage from "../SaleHomepage/SaleHomepase.jsx";
@@ -16,9 +16,9 @@ function MyHomePage() {
   const { container } = styles;
   useEffect(() => {
     const query = {
-      sortType: '',
+      sortType: "",
       page: 1,
-      limit: '',
+      limit: "",
     };
     getAllProduct(query).then((res) => {
       setListproduct(res.contents);

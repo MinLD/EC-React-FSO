@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { createContext } from "react";
-import getAllProduct from "../apis/apiProduct";
+import { getAllProduct } from "../apis/apiProduct";
 
 export const OurshopContext = createContext();
 

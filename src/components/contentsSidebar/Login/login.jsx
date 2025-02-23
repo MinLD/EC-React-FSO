@@ -51,7 +51,11 @@ function Login() {
       if (!isRegister) {
         await SignIn({ username, password })
           .then((res) => {
+            if(res.status=== 200){
+              toast.success('Login successful');
+            }
             const { id, token, refreshToken } = res.data;
+            
             setUserId(id);
             Cookies.set("token", token);
             Cookies.set("refreshToken", refreshToken);
@@ -60,7 +64,7 @@ function Login() {
             setIsOpen(false);
           })
           .catch((res) => {
-            console.log(res);
+            toast.error("Login Thất Bại");
           });
       }
     },

@@ -1,4 +1,6 @@
-react slick
+react slick : slider 
+ "simple-image-magnifier": "^1.1.3" :  zoom image
+
     "axios": "^1.7.9",
     "classnames": "^2.5.1",
     "formik": "^2.4.6",

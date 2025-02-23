@@ -24,7 +24,11 @@ function Content() {
         userId={userId}
       />
 
-      <PayMent isLoading={isLoading} ListProductCart={ListProductCart} />
+      <PayMent
+        isLoading={isLoading}
+        ListProductCart={ListProductCart}
+        boxTotals={true}
+      />
     </div>
   );
 }

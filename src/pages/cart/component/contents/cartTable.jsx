@@ -177,7 +177,7 @@ function CartTable({
                         <img
                           src={i.images[1]}
                           alt={i.name}
-                          style={{ width: "80px" }}
+                          style={{ width: "80px", cursor: "pointer" }}
                         />
                       </div>
                       <div className={boxtextProduct}>
