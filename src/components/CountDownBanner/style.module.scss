@@ -4,7 +4,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   width: calc(100% / 2);
-  height: 501.5px;
+  height: 409.5px;
   @include flex_box_custum(center, center, 0px);
 }
 .containerBanner {
@@ -18,8 +18,8 @@
   color: $four_color;
 }
 .boxBtn {
-    width: 172px;
-    margin-top: 20px;
-    margin: 20px auto;
-    text-align: center;
+  width: 172px;
+  margin-top: 20px;
+  margin: 20px auto;
+  text-align: center;
 }

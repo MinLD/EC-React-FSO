@@ -19,6 +19,8 @@ import ReactImageMagnifier from "simple-image-magnifier/react";
 import cls from "classnames";
 import { getDetailProduct, getRelatedProduct } from "../../apis/apiProduct";
 import { addProductToCard } from "../../apis/cardService";
+import LoadingTextCommon from "../../LoadingTextCommon/loadingTextCommon";
+import { toast } from "react-toastify";
 function DetailProduct() {
   const {
     container,
@@ -40,6 +42,9 @@ function DetailProduct() {
     boxOr,
     boxbtnBuy,
     isActive,
+    dataIsempty,
+    relatedIsempty,
+    Loading,
   } = styles;
 
   const product = [
@@ -84,6 +89,7 @@ function DetailProduct() {
   const params = useParams();
   const [isLoading, setLoading] = useState(true);
   const [isValueId, setValueId] = useState(0);
+  const [isLoadingBuy, setIsLoadingBuy] = useState(true);
   const handleResetForm = () => {
     setValueCount(1);
     setChoseSize(null);
@@ -136,6 +142,12 @@ function DetailProduct() {
     }
   }, [params]);
   const handleAddToCart = () => {
+    if (!userId) {
+      toast.success("Plese Login To Add To CART");
+      setType("Login");
+      setIsOpen(true);
+      return;
+    }
     const data = {
       userId,
       productId: params.id,
@@ -153,7 +165,24 @@ function DetailProduct() {
         console.log(err);
       });
   };
-
+  const handleBuy = () => {
+    const data = {
+      userId,
+      productId: params.id,
+      quantity: CountValue,
+      size: isChooseSise,
+    };
+    addProductToCard(data)
+      .then((res) => {
+        handleResetForm();
+        handleListProductCart(userId, "cart");
+        toast.success("Add to cart success");
+        navigate("/cart");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const data = [
     {
       id: 0,
@@ -171,175 +200,205 @@ function DetailProduct() {
       content: <Review />,
     },
   ];
+
   return (
     <>
       <MyHeader />
       <MyLayout>
         <div className={container}>
           {isLoading ? (
-            "isloading..."
+            <div className={Loading}>
+              {" "}
+              <LoadingTextCommon />
+            </div>
           ) : (
             <>
-              <div className={boxHeader} onClick={handleReturnToShop}>
-                <div>Home {">"} Men</div>
-                <div className={boxBackShop}>{">"} Return to previous page</div>
-              </div>
-              <div className={containerContents}>
-                <div className={boxImg}>
-                  {getDetailProductValue.images.map((i, k) => {
-                    return (
-                      <ReactImageMagnifier
-                        height={350}
-                        width={295}
-                        srcOriginal={i}
-                        srcPreview={i}
-                        key={k}
-                      />
-                    );
-                  })}
+              {!getDetailProductValue && !isLoading ? (
+                <div className={dataIsempty}>
+                  <h3>No data</h3>
+                  <div>
+                    {" "}
+                    <MyButton
+                      content={"Back to Shop"}
+                      onClick={() => navigate("/shop")}
+                    />
+                  </div>
                 </div>
-                <div className={boxContent}>
-                  <h2>{getDetailProductValue.name}</h2>
-                  <h3>${getDetailProductValue.price}</h3>
-                  <p>{getDetailProductValue.description}</p>
-                  <div className={boxSize}>
-                    <div>Size: {isChooseSise}</div>
-                    <div className={size}>
-                      {getDetailProductValue.size.map((i, k) => {
+              ) : (
+                <>
+                  <div className={boxHeader} onClick={handleReturnToShop}>
+                    <div>Home {">"} Men</div>
+                    <div className={boxBackShop}>
+                      {">"} Return to previous page
+                    </div>
+                  </div>
+                  <div className={containerContents}>
+                    <div className={boxImg}>
+                      {getDetailProductValue?.images.map((i, k) => {
                         return (
-                          <div
-                            className={cls(size, {
-                              [isActive]: isChooseSise === i.name,
-                            })}
+                          <ReactImageMagnifier
+                            height={350}
+                            width={295}
+                            srcOriginal={i}
+                            srcPreview={i}
                             key={k}
-                            onClick={() => handleGetChoseSize(i.name)}
-                          >
-                            {i.name}
-                          </div>
+                          />
                         );
                       })}
                     </div>
-                    {isChooseSise && (
-                      <div
-                        onClick={() => setChoseSize("")}
-                        style={{ cursor: "pointer" }}
-                      >
-                        Clear
-                      </div>
-                    )}
-                  </div>
-                  <div className={boxAdd}>
-                    <div className={boxCount}>
-                      <div
-                        onClick={() => handleCount("count")}
-                        style={{ cursor: "pointer" }}
-                      >
-                        +
-                      </div>
-                      <div>
-                        {CountValue <= 9 && "0"}
-                        {CountValue}
-                      </div>
-                      <div
-                        onClick={() => handleCount("")}
-                        style={{ cursor: "pointer" }}
-                      >
-                        -
-                      </div>
-                    </div>
-                    <div className={boxBtn}>
-                      <MyButton
-                        content={
-                          <div>
-                            <MdOutlineLocalGroceryStore />
-
-                            <span> ADD TO CART</span>
+                    <div className={boxContent}>
+                      <h2>{getDetailProductValue?.name}</h2>
+                      <h3>${getDetailProductValue?.price}</h3>
+                      <p>{getDetailProductValue?.description}</p>
+                      <div className={boxSize}>
+                        <div>Size: {isChooseSise}</div>
+                        <div className={size}>
+                          {getDetailProductValue?.size.map((i, k) => {
+                            return (
+                              <div
+                                className={cls(size, {
+                                  [isActive]: isChooseSise === i.name,
+                                })}
+                                key={k}
+                                onClick={() => handleGetChoseSize(i.name)}
+                              >
+                                {i.name}
+                              </div>
+                            );
+                          })}
+                        </div>
+                        {isChooseSise && (
+                          <div
+                            onClick={() => setChoseSize("")}
+                            style={{ cursor: "pointer" }}
+                          >
+                            Clear
                           </div>
-                        }
-                        disabled={isChooseSise ? false : true}
-                        onClick={() => handleAddToCart()}
-                      />
-                    </div>
-                  </div>
-                  <div className={boxbtnBuy}>
-                    <div className={boxOr}>
-                      <div />
-                      <span>OR</span>
-                      <div />
-                    </div>
-
-                    <div>
-                      <MyButton
-                        content={
-                          <div>
-                            <MdOutlineLocalGroceryStore />
-
-                            <span> Buy</span>
+                        )}
+                      </div>
+                      <div className={boxAdd}>
+                        <div className={boxCount}>
+                          <div
+                            onClick={() => handleCount("count")}
+                            style={{ cursor: "pointer" }}
+                          >
+                            +
                           </div>
-                        }
-                        disabled={isChooseSise ? false : true}
-                      />
-                    </div>
-                  </div>
-                  <div className={boxIcon}>
-                    <TfiReload
-                      style={{
-                        fontSize: "20px",
-                        border: "1px solid #333",
-                        padding: "5px",
-                        borderRadius: "50%",
-                      }}
-                    />
-                    <CiHeart
-                      style={{
-                        fontSize: "20px",
-                        border: "1px solid #333",
-                        padding: "5px",
-                        borderRadius: "50%",
-                      }}
-                    />
-                  </div>
-                  <div className={boxPayment}>
-                    <PaymentList />
-                  </div>
-                  <div className={boxText}>
-                    <div>
-                      <b>Brand: </b>
-                      <span>Brand 03</span>
-                    </div>
-                    <div>
-                      <b>SKU: </b>
-                      <span>87654</span>
-                    </div>
-                    <div>
-                      <b>Category: </b>
-                      <span>Men</span>
-                    </div>
-                  </div>
-                  <div className={boxAccordionMenu}>
-                    {data.map((i, k) => {
-                      return (
-                        <div style={{ paddingBottom: "20px" }}>
-                          <AccordionMenu
-                            key={k}
-                            title={i.title}
-                            contents={i.content}
-                            onClick={() => handleShowAccordion(i.id)}
-                            isValueId={isValueId}
-                            Id={i.id}
+                          <div>
+                            {CountValue <= 9 && "0"}
+                            {CountValue}
+                          </div>
+                          <div
+                            onClick={() => handleCount("")}
+                            style={{ cursor: "pointer" }}
+                          >
+                            -
+                          </div>
+                        </div>
+                        <div className={boxBtn}>
+                          <MyButton
+                            content={
+                              <div>
+                                <MdOutlineLocalGroceryStore />
+
+                                <span> ADD TO CART</span>
+                              </div>
+                            }
+                            disabled={isChooseSise ? false : true}
+                            onClick={() => handleAddToCart()}
                           />
                         </div>
-                      );
-                    })}
+                      </div>
+                      <div className={boxbtnBuy}>
+                        <div className={boxOr}>
+                          <div />
+                          <span>OR</span>
+                          <div />
+                        </div>
+
+                        <div>
+                          <MyButton
+                            content={
+                              <div>
+                                <MdOutlineLocalGroceryStore />
+
+                                <span> Buy</span>
+                              </div>
+                            }
+                            disabled={isChooseSise ? false : true}
+                            onClick={() => handleBuy()}
+                          />
+                        </div>
+                      </div>
+                      <div className={boxIcon}>
+                        <TfiReload
+                          style={{
+                            fontSize: "20px",
+                            border: "1px solid #333",
+                            padding: "5px",
+                            borderRadius: "50%",
+                          }}
+                        />
+                        <CiHeart
+                          style={{
+                            fontSize: "20px",
+                            border: "1px solid #333",
+                            padding: "5px",
+                            borderRadius: "50%",
+                          }}
+                        />
+                      </div>
+                      <div className={boxPayment}>
+                        <PaymentList />
+                      </div>
+                      <div className={boxText}>
+                        <div>
+                          <b>Brand: </b>
+                          <span>Brand 03</span>
+                        </div>
+                        <div>
+                          <b>SKU: </b>
+                          <span>87654</span>
+                        </div>
+                        <div>
+                          <b>Category: </b>
+                          <span>Men</span>
+                        </div>
+                      </div>
+                      <div className={boxAccordionMenu}>
+                        {data.map((i, k) => {
+                          return (
+                            <div style={{ paddingBottom: "20px" }}>
+                              <AccordionMenu
+                                key={k}
+                                title={i.title}
+                                contents={i.content}
+                                onClick={() => handleShowAccordion(i.id)}
+                                isValueId={isValueId}
+                                Id={i.id}
+                              />
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </>
+              )}
+            </>
+          )}
+          <div className={containerFooter}>
+            {!isRelatedProduct && !isLoading ? (
+              <div className={relatedIsempty}>
+                <h3>No related</h3>
               </div>
-              <div className={containerFooter}>
-                <h3>Related Product</h3>
+            ) : (
+              <>
                 {isLoading ? (
-                  "loading..."
+                  ""
                 ) : (
                   <div>
+                    <h3>Related Product</h3>
                     <SliderCommon
                       isSliderProductItem
                       data={isRelatedProduct}
@@ -347,9 +406,9 @@ function DetailProduct() {
                     />
                   </div>
                 )}
-              </div>
-            </>
-          )}
+              </>
+            )}
+          </div>
         </div>
       </MyLayout>
       <MyFooter />

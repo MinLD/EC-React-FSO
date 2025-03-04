@@ -55,9 +55,9 @@
 .containerProduct {
   @include flex_box_custum(space-between, flex-start, 10px);
   padding-top: 10px;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
 }
-.sessionListProduct{
+.sessionListProduct {
   min-height: 800px;
 }
 .loader {

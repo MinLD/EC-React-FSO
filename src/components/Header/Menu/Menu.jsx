@@ -6,12 +6,13 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 function MyMenu({ content, href }) {
   const { menuContent, subMenu } = styles;
-  const { setIsOpen, setType } = useContext(SidebarContext);
+  const { setIsOpen, setType, userId } = useContext(SidebarContext);
   const { userInfo, handleLogout } = useContext(StoreContext);
   const [isShow, setshow] = useState(false);
   const navigate = useNavigate();
+
   const handleTongle = () => {
-    if (content === "Sign In") {
+    if (content === "Sign In" && !userId) {
       setIsOpen(true);
       setType("login");
     }
